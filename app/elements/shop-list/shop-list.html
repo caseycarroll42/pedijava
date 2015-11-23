@@ -77,6 +77,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       toggleSelection: function(e) {
         var item = this.$.shopGrid.itemForElement(e.target);
         this.$.selector.select(item);
+        this.fire('show-shop');
       }
     });
   })();
