@@ -45,6 +45,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     .content {
       height: 900px;
       padding: 64px 16px 0;
+      width: 100%;
     }
 
     .title {
@@ -64,7 +65,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </paper-toolbar>
 
      <div class="content">
-       <shop-list shops="{{shops}}"></shop-list>
+       <shop-list shops="{{shops}}" selected="{{selected}}"></shop-list>
+       <div>Result: <span>{{selected.name}}</span></div>
      </div>        
     
     </paper-header-panel>
@@ -81,6 +83,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         title: {
           type: String,
           value: 'PediJava',
+          notify:true
+        },
+        selected: {
           notify:true
         }
       }
