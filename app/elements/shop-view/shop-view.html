@@ -17,7 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
     </style>
-    <div>Hello from <span>{{foo}}</span></div>
+    <div>Hello from <span>{{shop}}</span></div>
   </template>
   <script>
   (function() {
@@ -27,11 +27,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'shop-view',
 
       properties: {
-        foo: {
-          type: String,
-          value: 'shop-view',
-          notify: true
-        }
+        shop: Object              
       }
     });
   })();
