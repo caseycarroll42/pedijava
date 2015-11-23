@@ -57,7 +57,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </paper-card>
     </template>
 
-    <array-selector id="selector" items="{{shops}}" selected="{{selected}}"></array-selector>    
+    <array-selector id="selector" items="{{shops}}" selected="{{selectedroute}}"></array-selector>    
 
   </template>
   <script>
@@ -69,7 +69,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       properties: {
         shops: Array,
-        selected: {
+        selectedroute: {
           type: Object,
           notify: true
         }
