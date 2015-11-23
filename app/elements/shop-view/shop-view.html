@@ -13,6 +13,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
 <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/google-map/google-map.html">
+<link rel="import" href="../../bower_components/google-map/google-map-marker.html">
 
 <dom-module id="shop-view">
   <template>
@@ -36,6 +38,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 64px 64px 0 auto;       
       }
 
+      google-map {
+       height: 600px;
+      }
+
       .title {
         color: var(--secondary-text-color);
         font-size: 42px;
@@ -53,16 +59,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <paper-toolbar id="mainToolbar" class="tall">
           <!-- Application name -->
           <div class="middle middle-container center horizontal layout flex">
-            <div class="app-name flex">{{selectedroute.name}}</div>
+            <div class="app-name flex">{{selectedshop.name}}</div>
           </div>
       </paper-toolbar>
       <div class="content">
         <paper-material elevation="3">
           <div class="title">Menu</div>          
           <div class="title">Location</div>
-          
+
+          <google-map>
+            <google-map-marker latitude="{{selectedshop.latitude}}" longitude="{{selectedshop.longitude}}"></google-map-marker>
+          </google-map>
+
         </paper-material>
       </div>
+          <span>{{selectedshop.latitude}}</span>
+          <span>{{selectedshop.longitude}}</span>
     </paper-header-panel>
       
     </div>
@@ -75,7 +87,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'shop-view',
 
       properties: {
-        selectedroute: Object              
+        selectedshop: Object              
       }
     });
   })();
