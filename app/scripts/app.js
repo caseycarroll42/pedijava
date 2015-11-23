@@ -20,6 +20,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   window.addEventListener('show-shop', function() {    
     app.selected = 1;
   });
+  window.addEventListener('show-shop-list', function() {    
+    app.selected = 0;
+  });  
 
   app.displayInstalledToast = function() {
     // Check to make sure caching is actually enabled—it won't be in the dev environment.
