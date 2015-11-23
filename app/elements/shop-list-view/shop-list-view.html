@@ -1,0 +1,90 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../../bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../../bower_components/paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../shop-list/shop-list.html">
+
+<dom-module id="shop-list-view">
+  <template>
+    <style is="custom-style" include="app-theme"></style>
+    <style>
+      :host {
+        display: block;
+      }
+
+    paper-toolbar.tall .app-name {
+      font-size: 40px;
+      font-weight: 300;
+      height: 100%;
+      margin-left: 48px;
+    }
+
+    shop-list {
+      margin: 0 auto 32px;
+      max-width: 1000px;
+    }
+
+    paper-material {
+      height: 200px;
+      width: 50%;
+      background: white;
+      @apply(--layout-center-justified);
+    }
+
+    .content {
+      height: 900px;
+      padding: 64px 16px 0;
+    }
+
+    .title {
+      font-weight: 200;
+      font-size: 32px;
+      padding: 8px 0 8px 8px;
+    }
+
+    </style>
+    <div class="fit body">
+    <paper-header-panel main mode="waterfall-tall">
+      <paper-toolbar id="mainToolbar">
+          <!-- Application name -->
+          <div class="middle middle-container center horizontal layout flex">
+            <div class="app-name flex">{{title}}</div>
+          </div>
+      </paper-toolbar>
+
+     <div class="content">
+       <shop-list shops="{{shops}}"></shop-list>
+     </div>        
+    
+    </paper-header-panel>
+    </div>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'shop-list-view',
+
+      properties: {
+        title: {
+          type: String,
+          value: 'PediJava',
+          notify:true
+        }
+      }
+    });
+  })();
+  </script>
+</dom-module>
