@@ -47,15 +47,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
     
-    <template is="dom-repeat" items="{{shops}}" as="shop">
+    <template is="dom-repeat" items="{{shops}}" as="shop" id="shopGrid">
       <paper-card image="{{shop.img}}" elevation="1" animated-shadow="true">
         <div class="title"><span>{{shop.name}}</span></div>
         <div class="card-content"><span>{{shop.desc}}</span></div>
         <div class="card-actions">
-          <paper-button>See Menu</paper-button>
+          <paper-button on-tap="toggleSelection">See Menu</paper-button>
         </div>
       </paper-card>
     </template>
+
+    <array-selector id="selector" items="{{shops}}" selected="{{selectedshop}}"></array-selector>    
 
   </template>
   <script>
@@ -66,7 +68,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'shop-list',
 
       properties: {
-        shops: Array
+        shops: Array,
+        selectedshop: {
+          type: Object,
+          notify: true
+        }
+      },
+      toggleSelection: function(e) {
+        var item = this.$.shopGrid.itemForElement(e.target);
+        this.$.selector.select(item);
+        this.fire('show-shop');
       }
     });
   })();

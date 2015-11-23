@@ -66,9 +66,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <shop-data shops="{{shops}}">
       </shop-data>
 
-      <shop-list-view class="flex"
-                      shops="{{shops}}">
-      </shop-list-view>          
+      <neon-animated-pages class="flex" selected="{{selected}}">
+        <shop-list-view class="flex"
+                      shops="{{shops}}" selectedshop="{{selectedshop}}">
+        </shop-list-view>
+
+        <shop-view selectedshop="{{selectedshop}}"></shop-view>  
+      </neon-animated-pages>
+      
   </template>
 
   <!-- build:js scripts/app.js -->
