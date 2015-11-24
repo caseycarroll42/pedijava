@@ -18,6 +18,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 
+
 <link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
@@ -47,18 +48,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         position: absolute;
         left: 200px;
         top:500px;
-
       }
 
       paper-item {
-        font-size: 24px;
+        padding: 24px;
+        transition: background 0.3s ease;
       }
 
-      paper-button {
+      paper-item:hover {
+        background: var(--primary-background-color);
+      }
+
+      .place {
         width: 50%;
-        background: var(--light-primary-color);
-        color: white;
-        
+        background: var(--accent-color);
+        color: white;        
+      }
+
+      .quantity {
+        font-size: 24px;
+        border:solid;
+        border-width: 1px;
+        border-color: var(--primary-background-color);
+        padding: 5px 5px 5px 5px;
       }
 
       .title {
@@ -70,7 +82,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .content {
         margin: 64px 64px 0 auto;
         width: 65%;
-        height: 1000px;
+        height: 750px;
       }     
 
       .menu {
@@ -80,6 +92,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .button-container {
         text-align: center;
+      }
+
+      .list-title {
+        font-size: 24px;
+      }
+
+      .list-sub {
+        color:grey;
+      }
+
+      .total {
+        color:green;
+        font-size: 32px;
       }
     </style>
     
@@ -97,17 +122,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div class="title">Menu</div>              
           <div class="menu">
           <br>
+          
             <template is="dom-repeat" items="{{selectedshop.menu}}" as="menuitem">
               <paper-item>
-                <span class="flex">{{menuitem.name}}</span>
-                <span>{{menuitem.price}}</span>                
+                <paper-item-body class="flex">
+                  <div class="list-title"><span>{{menuitem.name}}</span></div>
+                  <div secondary class="list-sub"><span>{{menuitem.desc}}</span></div>
+                </paper-item-body>
+                <span class="list-title">{{menuitem.price}}</span>                
+                <paper-icon-button icon="minus"></paper-icon-button>
+                <div class="quantity"><span>{{quantity}}</span></div>
+                <paper-icon-button icon="add"></paper-icon-button>
               </paper-item>
-            </template>       
+            </template>  
+
+            <hr>
+            <div class="total layout horizontal around-justified">
+              <span>TOTAL: </span> <span>{{total}}</span>
+            </div>     
           </div>                   
+          
           <div class="button-container">
             <br>
-            <paper-button raised>place order</paper-button>
+            <paper-button raised class="place">place order</paper-button>
           </div>          
+        
         </paper-material>
       </div>
     </paper-header-panel>
@@ -127,10 +166,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       properties: {
         selectedshop: Object,
-        quanity: {
+        quantity: {
           type:Number,
           value:0,
           notify:true
+        },
+        total: {
+          type: Number,
+          value: 0
         },
         animationConfig: {
           value: function() {
