@@ -15,6 +15,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../shop-list/shop-list.html">
 
+<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
+
 <dom-module id="shop-list-view">
   <template>
     <style>
@@ -77,6 +81,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     Polymer({
       is: 'shop-list-view',
 
+      behaviors: [Polymer.NeonAnimatableBehavior],
+
       properties: {
         title: {
           type: String,
@@ -85,6 +91,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         },
         selectedshop: {
           notify:true
+        },
+        animationConfig: {
+          value: function() {
+            return {
+              'entry': {
+                name: 'fade-in-animation',
+                node: this
+              },
+              'exit': {
+                name: 'fade-out-animation',
+                node: this
+              }
+            }
+          }
         }
       }
     });
