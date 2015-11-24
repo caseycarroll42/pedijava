@@ -74,10 +74,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </paper-header-panel>
     </div>
   </template>
-  <script>
-  (function() {
-    'use strict';
-
+  <script>  
     Polymer({
       is: 'shop-list-view',
 
@@ -87,10 +84,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         title: {
           type: String,
           value: 'PediJava',
-          notify:true
+          notify: true
         },
         selectedshop: {
-          notify:true
+          notify: true
         },
         animationConfig: {
           value: function() {
@@ -103,11 +100,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 name: 'fade-out-animation',
                 node: this
               }
-            };
+            }
           }
         }
       }
     });
-  })();
   </script>
 </dom-module>

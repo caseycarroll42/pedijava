@@ -157,13 +157,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </div>
   </template>
   <script>
-  (function() {
-    'use strict';
-
     Polymer({
       is: 'shop-view',
 
-      behaviors: [Polymer.NeonAnimatableBehavior],
+      behaviors: [
+        Polymer.NeonAnimatableBehavior
+      ],
 
       properties: {
         selectedshop: Object,
@@ -187,7 +186,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 name: 'fade-out-animation',
                 node: this
               }
-            };
+            }
           }
         }              
       },
@@ -195,6 +194,5 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.fire('show-shop-list');
       }
     });
-  })();
   </script>
 </dom-module>
