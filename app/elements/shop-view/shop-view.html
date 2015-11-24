@@ -60,7 +60,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .place {
-        width: 50%;
+        width: 30%;
         background: var(--accent-color);
         color: white;        
       }
@@ -103,6 +103,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .total {
+        padding:16px 0px 16px 0px;
         color:green;
         font-size: 32px;
       }
@@ -130,7 +131,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   <div secondary class="list-sub"><span>{{menuitem.desc}}</span></div>
                 </paper-item-body>
                 <span class="list-title">{{menuitem.price}}</span>                
-                <paper-icon-button icon="minus"></paper-icon-button>
+                <paper-icon-button icon="remove"></paper-icon-button>
                 <div class="quantity"><span>{{quantity}}</span></div>
                 <paper-icon-button icon="add"></paper-icon-button>
               </paper-item>
@@ -144,7 +145,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           
           <div class="button-container">
             <br>
-            <paper-button raised class="place">place order</paper-button>
+            <paper-button raised class="place">place order ></paper-button>
           </div>          
         
         </paper-material>
