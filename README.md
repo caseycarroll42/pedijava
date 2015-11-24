@@ -2,6 +2,8 @@
 
 > A Denton delivery service that delivers coffee by bike.
 
+Check out my progress here: (https://pedijava.firebaseapp.com/)
+
 ### What's in the cup:
 
 * [Polymer](http://polymer-project.org), [Paper](https://elements.polymer-project.org/browse?package=paper-elements), [Iron](https://elements.polymer-project.org/browse?package=iron-elements) and [Neon](https://elements.polymer-project.org/browse?package=neon-elements) elements
