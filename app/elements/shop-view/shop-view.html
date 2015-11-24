@@ -14,6 +14,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
 
 <dom-module id="shop-view">
   <template>
@@ -30,14 +37,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       paper-material {
-        background: white;
+        background-color: white;
         height: 100%;              
         border-radius: 5px;  
       }
 
-      google-map {
-       height: 600px;
-       background: white;
+      paper-fab {
+        @apply(--layout-center-justified);
+        position: absolute;
+        left: 200px;
+        top:500px;
+
+      }
+
+      paper-item {
+        font-size: 24px;
       }
 
       .title {
@@ -52,12 +66,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         height: 1000px;
       }     
 
-      paper-fab {
-        @apply(--layout-center-justified);
-        position: absolute;
-        left: 250px;
-        top:500px;
-
+      .menu {
+        width: 65%;
+        margin: 0 auto;
       }
     </style>
     
@@ -72,7 +83,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       
       <div class="content">
         <paper-material elevation="3">
-          <div class="title">Menu</div>          
+          <div class="title">Menu</div>              
+          <div class="menu">
+          <br>
+            <template is="dom-repeat" items="{{selectedshop.menu}}" as="menuitem">
+              <paper-item>
+                <span class="flex">{{menuitem.name}}</span>
+                <span>{{menuitem.price}}</span>                
+              </paper-item>
+            </template>       
+          </div>         
+        
         </paper-material>
       </div>
     </paper-header-panel>
@@ -88,8 +109,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     Polymer({
       is: 'shop-view',
 
+      behaviors: [Polymer.NeonAnimatableBehavior],
+
       properties: {
-        selectedshop: Object              
+        selectedshop: Object,
+        quanity: {
+          type:Number,
+          value:0,
+          notify:true
+        },
+        animationConfig: {
+          value: function() {
+            return {
+              'entry': {
+                name: 'fade-in-animation',
+                node: this
+              },
+              'exit': {
+                name: 'fade-out-animation',
+                node: this
+              }
+            };
+          }
+        }              
       },
       showList: function() {
         this.fire('show-shop-list');
