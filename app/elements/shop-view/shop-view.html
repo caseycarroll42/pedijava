@@ -54,6 +54,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-size: 24px;
       }
 
+      paper-button {
+        width: 50%;
+        background: var(--light-primary-color);
+        color: white;
+        
+      }
+
       .title {
         color: var(--secondary-text-color);
         font-size: 64px;
@@ -69,6 +76,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .menu {
         width: 65%;
         margin: 0 auto;
+      }
+
+      .button-container {
+        text-align: center;
       }
     </style>
     
@@ -92,8 +103,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <span>{{menuitem.price}}</span>                
               </paper-item>
             </template>       
-          </div>         
-        
+          </div>                   
+          <div class="button-container">
+            <br>
+            <paper-button raised>place order</paper-button>
+          </div>          
         </paper-material>
       </div>
     </paper-header-panel>
